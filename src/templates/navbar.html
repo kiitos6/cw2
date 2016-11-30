@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Business Frontpage - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/business-frontpage.css') }}" rel="stylesheet"/>
+
+    <link href="{{ url_for('static', filename='css/contenedorFoto.css') }}" rel="stylesheet"/>
+	
+</head>
+<body>
+
+  <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Home</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                {% if session.logged_in  %}
+                 <li>
+                        <a href="/account1">My Account</a>
+                    </li>
+                    <li>
+                        <a href="/advert">New Advert</a>
+                    </li>
+                    <li>
+                        <a href="/advertsCatalogue">Adverts</a>
+                    </li>
+                    <li>
+                        <a href="/logout">Log out</a>
+                    </li>
+
+                {% else %}
+                    <li>
+                        <a href="/account1">My Account</a>
+                    </li>
+                    <li>
+                        <a href="/advert">New Advert</a>
+                    </li>
+                    <li>
+                        <a href="/advertsCatalogue">Adverts</a>
+                    </li>
+                    <li>
+                        <a href="/login">Log in</a>
+                    </li>
+                    {% endif %}
+                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+             <div class="alert alert-warning alert-dismissible" role="alert">
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
+                {{message}}
+             </div>
+
+
+            {% endfor %}
+
+        {% endif %}
+
+    {% endwith %}
+    {% block body %} {% endblock %}
+</body>
+
+
+</html>

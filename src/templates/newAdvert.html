@@ -1,0 +1,114 @@
+{% extends "navbar.html" %}
+
+{% block body %}
+
+
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Post a new advert</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>House details</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                <div class="form-group" >
+                                            <form id="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
+
+                                                <strong>Files:</strong><br>
+                                                <input id="file-picker" type="file" name="file" accept="image/*" multiple>
+                                                <div id="msg"></div>
+                                                <input type="submit" value="Upload" id="upload-button">
+                                            </form>
+                                            
+                                        </div>
+                                    <form action="/takeform" method="POST">
+                                        <div class="form-group">
+                                            <label>Select type of advert</label><br/>
+                                            <input type="radio" name="typeAdvert" value="Rent" checked> Rent<br>
+                                            <input type="radio" name="typeAdvert" value="Exchange"> Exchange<br>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>City</label>
+                                            <input class="form-control" placeholder="i.e. Edinburgh" name="city">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Postal zip</label>
+                                            <input class="form-control" placeholder="i.e. EH91QS" name="pzip">
+                                        </div>
+                                       
+                                        
+                                        <div class="form-group">
+                                           
+                                                <label>Description of the house</label>
+                                                <textarea class="form-control" name="houseDescription" rows="4" placeholder ="Write here the description of the house"></textarea>
+       
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Price</label>
+                                            <input class="form-control"  name="price" placeholder="€">
+                                        </div>
+                                        
+                                        <input class="btn btn-default" type="submit" value="Save"/>
+                                       
+                                    </form>
+
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+<script>
+    $("#file-picker").change(function(){
+        var input = document.getElementById('file-picker');
+        for (var i=0; i<input.files.length; i++)
+        {
+        
+            var ext= input.files[i].name.substring(input.files[i].name.lastIndexOf('.')+1).toLowerCase()
+            if ((ext == 'jpg') || (ext == 'png'))
+            {
+                $("#msg").text("Files are supported")
+            }
+            else
+            {
+                $("#msg").text("Files are NOT supported")
+                document.getElementById("file-picker").value ="";
+            }
+        }
+    } );
+</script>
+{% endblock %}
