@@ -1,0 +1,1 @@
+to run the web-app you just need to run the file webapp.py whin is in the src/ folder.

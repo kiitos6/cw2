@@ -1,0 +1,70 @@
+The aim of this report is to describe the web-app and explain how it works and how are 
+architected.
+
+INTRODUCTION
+
+The web-app is a website for rent and exchange of floor. The bad part is that it is not complete, 
+it still lacks some features. There is no database, so I can't storage new data.
+There is a navbar with five options: Home, My account, New Advert, Adverts and Log in. 
+The root page is Home. In Home, there is just a tittle, a picture and a little description about 
+what is the website. At the bottom there is a button which says "Start now >>", andthe action depends 
+on if you are logged in or not. If you are not logged in, you are redirected to the log in page, and 
+if you were already logged in, you are redirected to the page of posting new adverts.
+
+The next option is My account, if you are not logged in, you are redirected to the log in page, and a 
+flash message is displayed saying that you need to be logged in to acces My Account. Once you are
+identified, there is a form where you can fill in with your name, your city and a brief description
+about you(this is good if you are exchanging your house and wants to know a bit about the other person).
+At the bottom, there is a "Save" button that will redirect you to a new screen showing you the filled form.
+The information is not going to be storaged due to there isn't database. Continuing with the navbar, 
+New Advert is the next option. Again, you are redirected to the login page if you aren't logged in yet. 
+In new Advert there is a input method for uploading images(a flash message is shown after an upload), 
+and a form to fill with information about the flat/house. At the bottom there is a "Save" button that 
+shows you how the advert will look like.The pity is that the advert can't be storaged. In the sample advert, 
+there is a "<--Back" label to go back to the form. Adverts is the next tab. Here is where the adverts
+should be. This is a sample of how the list of adverts could be. You can click in one advert to see 
+all the information, and bigger pictures.
+
+Finally, the Log in tab is the last one, when you click, a screen showing two input text to log in 
+are showed. When you do the log in, a flash message saying that you are now logged in is displayed. 
+The Log in label changes to Log out. A flash message is shown too when you do the log out.
+
+DESIGN
+
+The web-app is ubicated at coursework2/src. Inside this folder we can see the python flask file
+-webapp.py- which is the one you need to run the webapp. There are too other folders like /static,
+where there are two more folders which are /css where are all the css files and /images where are 
+some images. The files you upload go to /static/upload. In src/templates are all the templates that
+the webapp needs. Navbar.html is for the navbar, and all the other templates extend from this.
+index.html is the home screen. login.html is for the login page. newAdvert is for the page of post 
+a new advert. advert1.html, is the template for the sample of new adverts. accountinfo.html, is the
+sample of My account whe you fill the form. advertsCatalog.html, is for the adverts tab. advertExample.html
+is the template for the adverts when you click for more information(."See ad"). 404.html is the template 
+that appears when you input a bad url. Finally, account.html is the template for the My account tab.
+
+ENHANCEMENTS
+
+The most importat enhancement I think is the database, because in a website like this, of adverts that
+people has to put. Without database, is not possible to allow new people to register, so this is a bit no 
+sense in a page like this. The possibility of leave comments on the adverts, or sent messages between users
+I think is a good option too. The sample of the adverts need a improvement of design, due to is pretty simple
+and without any combination of colours.
+
+CRITICAL EVALUATION
+
+I think that the fact of don't having database do the page simple. You still can interact with it but you 
+can't see new things.
+
+PERSONAL EVALUATION
+
+In this work I have learn how to use the extends for the templates, how to flash messages, a bit more
+about the possibilities of the sessions. The thing it took more time to me was the way of save the data
+of the forms, to show it again in another template.
+
+
+SUMMARY OF RESOURCES
+
+www.youtube.com
+http://www.w3schools.com/
+http://stackoverflow.com/
+https://startbootstrap.com/
