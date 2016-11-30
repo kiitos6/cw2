@@ -44,9 +44,7 @@ def logout():
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-# @app.route("/upload")
-# def upload1():
-#     return render_template("upload1.html")
+
 
 @app.route("/upload", methods=['POST'])
 def upload():
