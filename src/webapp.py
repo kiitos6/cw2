@@ -71,12 +71,14 @@ def send_image(filename):
 
 @app.route("/advert")
 def advert():
-    if session['logged_in']:
-       return render_template('newAdvert.html')
+    try:
+        if session['logged_in']:
+            return render_template('newAdvert.html')
 
-    else:
-        flash("You need to log in to post adverts")
-        return redirect(url_for('login'))
+    except KeyError:
+            pass
+    flash("You need to log in to post adverts")
+    return redirect(url_for('login'))
 
 @app.route("/takeform", methods=['POST'])
 def takeform():
