@@ -153,13 +153,16 @@ try:
 
     @app.route("/account1", methods=['POST','GET'])
     def account1():
-        if session['logged_in'] : 
-            return render_template('account.html')
+        try:
+            if session['logged_in']: 
+                return render_template('account.html')
+        except KeyError:
+            pass
+        flash("You need to log in to go to My Account")
+        return redirect(url_for('login'))
+        
 
-        else:
-            flash("You need to log in to go to My Account")
-            return redirect(url_for('login'))
-
+        
 
 except broken_pipe_exception as exc:
     if broken_pipe_exception == IOError:
